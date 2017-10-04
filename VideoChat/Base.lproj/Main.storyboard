@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Room View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RoomViewController" customModule="VideoChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvu-Mh-OKs">
+                                <rect key="frame" x="150" y="296" width="75" height="75"/>
+                                <state key="normal" image="CallButton"/>
+                                <connections>
+                                    <action selector="callButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PcB-EZ-ab2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xvu-Mh-OKs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c9C-Wh-Z96"/>
+                            <constraint firstItem="Xvu-Mh-OKs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tsI-Kl-vd2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="3U6-tH-bhW" kind="show" identifier="callSegue" id="mt1-Tn-Upq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-466.39999999999998" y="98.50074962518741"/>
+        </scene>
+        <!--Video Chat View Controller-->
+        <scene sceneID="8AI-6b-z2C">
+            <objects>
+                <viewController id="3U6-tH-bhW" customClass="VideoChatViewController" customModule="VideoChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="31A-eX-lin">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY5-Zs-FpO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfJ-iI-rWk">
+                                        <rect key="frame" x="225" y="517" width="120" height="120"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="4j5-eZ-AQB"/>
+                                            <constraint firstAttribute="width" constant="120" id="rtt-fs-obx"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4c-iI-bT5">
+                                        <rect key="frame" x="30" y="519" width="121" height="118"/>
+                                        <state key="normal" image="EndCallButton"/>
+                                        <connections>
+                                            <action selector="endCallButtonPressed:" destination="3U6-tH-bhW" eventType="touchUpInside" id="aqt-i4-QvF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="X4c-iI-bT5" firstAttribute="leading" secondItem="BY5-Zs-FpO" secondAttribute="leading" constant="30" id="LwV-wj-Jr2"/>
+                                    <constraint firstAttribute="bottom" secondItem="X4c-iI-bT5" secondAttribute="bottom" constant="30" id="pGW-Tn-gZW"/>
+                                    <constraint firstAttribute="bottom" secondItem="SfJ-iI-rWk" secondAttribute="bottom" constant="30" id="rrg-xV-FKw"/>
+                                    <constraint firstAttribute="trailing" secondItem="SfJ-iI-rWk" secondAttribute="trailing" constant="30" id="xze-Mu-YKw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BY5-Zs-FpO" firstAttribute="bottom" secondItem="AyO-Ko-TKm" secondAttribute="bottom" id="gJx-41-c9J"/>
+                            <constraint firstItem="BY5-Zs-FpO" firstAttribute="leading" secondItem="AyO-Ko-TKm" secondAttribute="leading" id="kCt-4B-BeK"/>
+                            <constraint firstItem="BY5-Zs-FpO" firstAttribute="top" secondItem="31A-eX-lin" secondAttribute="top" id="qjK-kg-T9n"/>
+                            <constraint firstItem="BY5-Zs-FpO" firstAttribute="trailing" secondItem="AyO-Ko-TKm" secondAttribute="trailing" id="u1v-6T-YnS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AyO-Ko-TKm"/>
+                    </view>
+                    <connections>
+                        <outlet property="hangUpButton" destination="X4c-iI-bT5" id="hRR-Z0-icI"/>
+                        <outlet property="localView" destination="SfJ-iI-rWk" id="CRI-pM-WaX"/>
+                        <outlet property="localViewBottomConstraint" destination="rrg-xV-FKw" id="M9V-bn-nY7"/>
+                        <outlet property="localViewHeightConstraint" destination="4j5-eZ-AQB" id="LDz-LZ-96V"/>
+                        <outlet property="localViewRightConstraint" destination="xze-Mu-YKw" id="O6D-lZ-vfH"/>
+                        <outlet property="localViewWidthConstraint" destination="rtt-fs-obx" id="evT-WN-358"/>
+                        <outlet property="remoteView" destination="BY5-Zs-FpO" id="fbL-qt-Zdf"/>
+                        <outlet property="remoteViewBottomConstraint" destination="gJx-41-c9J" id="Rhn-vz-xVj"/>
+                        <outlet property="remoteViewLeftConstraint" destination="kCt-4B-BeK" id="Cnu-sy-1f5"/>
+                        <outlet property="remoteViewRightConstraint" destination="u1v-6T-YnS" id="PlY-hu-YzO"/>
+                        <outlet property="remoteViewTopConstraint" destination="qjK-kg-T9n" id="2QJ-sP-l4G"/>
+                        <segue destination="hsg-8L-dxO" kind="unwind" identifier="unwindToCallScreen" unwindAction="unwindToCallScreenWithSegue:" id="7BF-qs-Qzq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXj-ZD-ORy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hsg-8L-dxO" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="920.79999999999995" y="98.50074962518741"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CallButton" width="75" height="75"/>
+        <image name="EndCallButton" width="121" height="118"/>
+    </resources>
+</document>
