@@ -24,7 +24,7 @@ class VideoChatViewController: UIViewController {
     @IBOutlet weak var localViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var localViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var localViewRightConstraint: NSLayoutConstraint!
-    
+    //Var
     var roomUrl:String?;
     var client:ARDAppClient?;
     var _roomName:NSString=NSString(format: "")
@@ -33,12 +33,15 @@ class VideoChatViewController: UIViewController {
     var remoteVideoTrack:RTCVideoTrack?;
     var localVideoSize:CGSize?;
     var remoteVideoSize:CGSize?;
+    var captureController:ARDCaptureController = ARDCaptureController()
+
     
     override func viewDidLoad() {
         print("ViewDidLoadbegan");
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.roomName="907207548"
+        //self.roomName="907207548"
+        self.roomName="461909097"
         self.remoteView?.delegate=self
         self.localView?.delegate=self
         print("ViewDidLoad");
@@ -52,7 +55,6 @@ class VideoChatViewController: UIViewController {
         let settingsModel = ARDSettingsModel()
         //we can force unwrap roomname because we will make sure it has a string
         self.client!.connectToRoom(withId: self.roomName! as String!, settings: settingsModel, isLoopback: false, isAudioOnly: false, shouldMakeAecDump: false, shouldUseLevelControl: false)
-        print("Successfully Connected to room \(self.roomName!)!")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +68,22 @@ class VideoChatViewController: UIViewController {
     
     func disconnect(){
         if let _ = self.client {
+            self.localVideoTrack?.remove(self.localView!)
+            self.remoteVideoTrack?.remove(self.remoteView!)
             self.localView?.renderFrame(nil)
             self.remoteView?.renderFrame(nil)
+            self.localVideoTrack=nil
+            self.remoteVideoTrack=nil
             self.client?.disconnect()
         }
-        print("Successfully Disconnected from room \(self.roomName!)!")
+    }
+    
+    func remoteDisconnected(){
+        self.remoteVideoTrack?.remove(self.remoteView!)
+        self.remoteView?.renderFrame(nil)
+        if self.localVideoSize != nil {
+            self.videoView(self.localView!, didChangeVideoSize: self.localVideoSize!)
+        }
     }
 
     @IBAction func endCallButtonPressed(_ sender: Any) {
@@ -98,21 +111,48 @@ class VideoChatViewController: UIViewController {
 
 extension VideoChatViewController: ARDAppClientDelegate {
     func appClient(_ client: ARDAppClient!, didChange state: ARDAppClientState) {
+        switch (state) {
+        case .connected:
+            print("Client connected.");
+        case .connecting:
+            print("Client connecting.");
+        case .disconnected:
+            print("Client disconnected.");
+            self.remoteDisconnected();
+        }
     }
     
     func appClient(_ client: ARDAppClient!, didChange state: RTCIceConnectionState) {
     }
     
     func appClient(_ client: ARDAppClient!, didCreateLocalCapturer localCapturer: RTCCameraVideoCapturer!) {
+        let settingsModel = ARDSettingsModel()
+        captureController = ARDCaptureController(capturer: localCapturer, settings: settingsModel)
+        captureController.startCapture()
     }
     
     func appClient(_ client: ARDAppClient!, didReceiveLocalVideoTrack localVideoTrack: RTCVideoTrack!) {
+        self.localVideoTrack?.remove(self.localView!)
+        self.localView?.renderFrame(nil)
+        self.localVideoTrack=localVideoTrack
+        self.localVideoTrack?.add(self.localView!)
     }
     
     func appClient(_ client: ARDAppClient!, didReceiveRemoteVideoTrack remoteVideoTrack: RTCVideoTrack!) {
+        self.remoteVideoTrack=remoteVideoTrack
+        self.remoteVideoTrack?.add(self.remoteView!)
+        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+            self.localViewBottomConstraint?.constant=28.0
+            self.localViewRightConstraint?.constant=28.0
+            self.localViewHeightConstraint?.constant=self.view.frame.size.height/4
+            self.localViewWidthConstraint?.constant=self.view.frame.size.width/4
+        })
     }
     
     func appClient(_ client: ARDAppClient!, didError error: Error!) {
+        let alert = UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "close")
+        alert.show()
+        self.disconnect()
     }
     
     func appClient(_ client: ARDAppClient!, didGetStats stats: [Any]!) {
