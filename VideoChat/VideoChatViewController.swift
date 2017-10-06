@@ -35,11 +35,13 @@ class VideoChatViewController: UIViewController {
     var remoteVideoSize:CGSize?;
     
     override func viewDidLoad() {
+        print("ViewDidLoadbegan");
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.roomName="907207548"
         self.remoteView?.delegate=self
         self.localView?.delegate=self
+        print("ViewDidLoad");
     }
     
     func connect() {

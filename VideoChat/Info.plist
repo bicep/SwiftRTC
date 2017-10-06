@@ -24,6 +24,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Media Library Usage</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To Enter Video Chat</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>To Enter Video Chat</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

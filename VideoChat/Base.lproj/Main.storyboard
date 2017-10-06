@@ -21,7 +21,7 @@
                                 <rect key="frame" x="150" y="296" width="75" height="75"/>
                                 <state key="normal" image="CallButton"/>
                                 <connections>
-                                    <action selector="callButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PcB-EZ-ab2"/>
+                                    <segue destination="3U6-tH-bhW" kind="show" id="S5Q-F7-WqT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -32,9 +32,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <segue destination="3U6-tH-bhW" kind="show" identifier="callSegue" id="mt1-Tn-Upq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,38 +45,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY5-Zs-FpO">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY5-Zs-FpO" customClass="RTCEAGLVideoView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfJ-iI-rWk">
-                                        <rect key="frame" x="225" y="517" width="120" height="120"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="4j5-eZ-AQB"/>
-                                            <constraint firstAttribute="width" constant="120" id="rtt-fs-obx"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4c-iI-bT5">
-                                        <rect key="frame" x="30" y="519" width="121" height="118"/>
-                                        <state key="normal" image="EndCallButton"/>
-                                        <connections>
-                                            <action selector="endCallButtonPressed:" destination="3U6-tH-bhW" eventType="touchUpInside" id="aqt-i4-QvF"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfJ-iI-rWk" customClass="RTCEAGLVideoView">
+                                <rect key="frame" x="215" y="507" width="120" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="X4c-iI-bT5" firstAttribute="leading" secondItem="BY5-Zs-FpO" secondAttribute="leading" constant="30" id="LwV-wj-Jr2"/>
-                                    <constraint firstAttribute="bottom" secondItem="X4c-iI-bT5" secondAttribute="bottom" constant="30" id="pGW-Tn-gZW"/>
-                                    <constraint firstAttribute="bottom" secondItem="SfJ-iI-rWk" secondAttribute="bottom" constant="30" id="rrg-xV-FKw"/>
-                                    <constraint firstAttribute="trailing" secondItem="SfJ-iI-rWk" secondAttribute="trailing" constant="30" id="xze-Mu-YKw"/>
+                                    <constraint firstAttribute="height" constant="120" id="4j5-eZ-AQB"/>
+                                    <constraint firstAttribute="width" constant="120" id="rtt-fs-obx"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4c-iI-bT5">
+                                <rect key="frame" x="40" y="509" width="121" height="118"/>
+                                <state key="normal" image="EndCallButton"/>
+                                <connections>
+                                    <action selector="endCallButtonPressed:" destination="3U6-tH-bhW" eventType="touchUpInside" id="aqt-i4-QvF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AyO-Ko-TKm" firstAttribute="bottom" secondItem="X4c-iI-bT5" secondAttribute="bottom" constant="40" id="ABa-o2-fMs"/>
+                            <constraint firstItem="AyO-Ko-TKm" firstAttribute="trailing" secondItem="SfJ-iI-rWk" secondAttribute="trailing" constant="40" id="AZw-B3-DG7"/>
+                            <constraint firstItem="AyO-Ko-TKm" firstAttribute="bottom" secondItem="SfJ-iI-rWk" secondAttribute="bottom" constant="40" id="XGx-Gn-3Pc"/>
                             <constraint firstItem="BY5-Zs-FpO" firstAttribute="bottom" secondItem="AyO-Ko-TKm" secondAttribute="bottom" id="gJx-41-c9J"/>
                             <constraint firstItem="BY5-Zs-FpO" firstAttribute="leading" secondItem="AyO-Ko-TKm" secondAttribute="leading" id="kCt-4B-BeK"/>
+                            <constraint firstItem="X4c-iI-bT5" firstAttribute="leading" secondItem="AyO-Ko-TKm" secondAttribute="leading" constant="40" id="ktE-7L-jei"/>
                             <constraint firstItem="BY5-Zs-FpO" firstAttribute="top" secondItem="31A-eX-lin" secondAttribute="top" id="qjK-kg-T9n"/>
                             <constraint firstItem="BY5-Zs-FpO" firstAttribute="trailing" secondItem="AyO-Ko-TKm" secondAttribute="trailing" id="u1v-6T-YnS"/>
                         </constraints>
@@ -88,9 +81,9 @@
                     <connections>
                         <outlet property="hangUpButton" destination="X4c-iI-bT5" id="hRR-Z0-icI"/>
                         <outlet property="localView" destination="SfJ-iI-rWk" id="CRI-pM-WaX"/>
-                        <outlet property="localViewBottomConstraint" destination="rrg-xV-FKw" id="M9V-bn-nY7"/>
+                        <outlet property="localViewBottomConstraint" destination="XGx-Gn-3Pc" id="pIx-KW-TDp"/>
                         <outlet property="localViewHeightConstraint" destination="4j5-eZ-AQB" id="LDz-LZ-96V"/>
-                        <outlet property="localViewRightConstraint" destination="xze-Mu-YKw" id="O6D-lZ-vfH"/>
+                        <outlet property="localViewRightConstraint" destination="AZw-B3-DG7" id="sGw-xP-dLk"/>
                         <outlet property="localViewWidthConstraint" destination="rtt-fs-obx" id="evT-WN-358"/>
                         <outlet property="remoteView" destination="BY5-Zs-FpO" id="fbL-qt-Zdf"/>
                         <outlet property="remoteViewBottomConstraint" destination="gJx-41-c9J" id="Rhn-vz-xVj"/>

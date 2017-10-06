@@ -58,6 +58,8 @@
 		A87AF1131F84CA6100531CBC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A87AF1121F84CA6100531CBC /* libc++.tbd */; };
 		A87AF1201F84D7B400531CBC /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87AF0A61F84C87700531CBC /* WebRTC.framework */; };
 		A87AF1211F84DCC900531CBC /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A87AF0D21F84C87700531CBC /* SRWebSocket.m */; };
+		A8C7383D1F875DA500DAC8AE /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87AF0A61F84C87700531CBC /* WebRTC.framework */; };
+		A8C7383E1F875DA500DAC8AE /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A87AF0A61F84C87700531CBC /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,20 @@
 			remoteInfo = VideoChat;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A8C7383F1F875DA500DAC8AE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8C7383E1F875DA500DAC8AE /* WebRTC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A865761F1F8492630073163B /* VideoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C7383D1F875DA500DAC8AE /* WebRTC.framework in Frameworks */,
 				A87AF1201F84D7B400531CBC /* WebRTC.framework in Frameworks */,
 				A87AF1131F84CA6100531CBC /* libc++.tbd in Frameworks */,
 				A87AF1111F84CA4E00531CBC /* libicucore.tbd in Frameworks */,
@@ -433,6 +450,7 @@
 				A865761B1F8492630073163B /* Sources */,
 				A865761C1F8492630073163B /* Frameworks */,
 				A865761D1F8492630073163B /* Resources */,
+				A8C7383F1F875DA500DAC8AE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

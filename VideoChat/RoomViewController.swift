@@ -19,13 +19,8 @@ class RoomViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func callButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "callSegue", sender: sender)
-    }
     
     @IBAction func unwindToCallScreen(segue:UIStoryboardSegue) {
-        
     }
 
     
